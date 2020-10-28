@@ -1,0 +1,157 @@
+<!-- title -->
+<h1 mat-dialog-title>{{data.action}}</h1>
+
+<!-- content -->
+<mat-dialog-content class="mat-typography">
+    <!-- form create -->
+    <form class="form-create" [formGroup]="formCreate" *ngIf="data.action == 'Criação'">
+        <!-- nome -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Nome</mat-label>
+            <input formControlName="nome" matInput type="text" placeholder="Tênis">
+            <mat-hint>Obrigatório</mat-hint>
+            <mat-error>
+                Nome inválido
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- marca -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Marca</mat-label>
+            <input formControlName="marca" matInput type="text" placeholder="Adidas">
+            <mat-hint>Obrigatório</mat-hint>
+            <mat-error>
+                Marca inválida
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- modelo -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Modelo</mat-label>
+            <input formControlName="modelo" matInput type="text" placeholder="ProMax">
+            <mat-hint>Obrigatório</mat-hint>
+            <mat-error>
+                Modelo inválido
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- preco -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Preço</mat-label>
+            <input formControlName="preco" matInput type="text">
+            <mat-hint>Obrigatório</mat-hint>
+            <mat-error>
+                Preço inválido
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- link -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Link</mat-label>
+            <input formControlName="link" matInput type="url">
+            <mat-error>
+                Link inválido
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- descricao -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Descrição</mat-label>
+            <textarea formControlName="descricao" matInput placeholder="Boa qualidade"></textarea>
+            <mat-error>
+                Descrição inválida
+            </mat-error>
+        </mat-form-field>
+    </form>
+
+    <!-- form edit -->
+    <form class="form-edit" [formGroup]="formEdit" *ngIf="data.action == 'Edição'">
+        <!-- nome -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Nome</mat-label>
+            <input formControlName="nome" matInput type="text" placeholder="Tênis">
+            <mat-hint>Obrigatório</mat-hint>
+            <mat-error>
+                Nome inválido
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- marca -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Marca</mat-label>
+            <input formControlName="marca" matInput type="text" placeholder="Adidas">
+            <mat-hint>Obrigatório</mat-hint>
+            <mat-error>
+                Marca inválida
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- modelo -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Modelo</mat-label>
+            <input formControlName="modelo" matInput type="text" placeholder="ProMax">
+            <mat-hint>Obrigatório</mat-hint>
+            <mat-error>
+                Modelo inválido
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- preco -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Preço</mat-label>
+            <input formControlName="preco" matInput type="text">
+            <mat-hint>Obrigatório</mat-hint>
+            <mat-error>
+                Preço inválido
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- link -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Link</mat-label>
+            <input formControlName="link" matInput type="url">
+        </mat-form-field>
+        <br>
+        <br>
+
+        <!-- descricao -->
+        <mat-form-field appearance="fill" class="input-container">
+            <mat-label>Descrição</mat-label>
+            <textarea formControlName="descricao" matInput placeholder="Boa qualidade"
+            ></textarea>
+            <mat-error>
+                Descrição inválida
+            </mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<!-- actions -->
+<mat-dialog-actions align="end">
+    <!-- close -->
+    <button mat-button (click)="Close()">Fechar</button>
+
+    <!-- create -->
+    <button *ngIf="data.action == 'Criação'" mat-flat-button color="primary" (click)="Create()">Salvar</button>
+
+    <!-- edit -->
+    <button *ngIf="data.action == 'Edição'" mat-flat-button color="primary" (click)="Edit()">Editar</button>
+</mat-dialog-actions>

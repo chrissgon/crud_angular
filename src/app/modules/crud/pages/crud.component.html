@@ -1,0 +1,69 @@
+<!-- toolbar -->
+<mat-toolbar color="primary">
+    <span>Crud Angular</span>
+</mat-toolbar>
+
+<!-- container -->
+<section class="container">
+    <!-- options -->
+    <header class="header">
+        <h1>Lista de Produtos</h1>
+        <button mat-flat-button color="primary" (click)="openDialogCreate()">Criar</button>
+    </header>
+
+    <!-- table -->
+    <table mat-table [dataSource]="products" class="" width="100%">
+
+        <!-- nome -->
+        <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let product"> {{product.nome}} </td>
+        </ng-container>
+
+        <!-- marca -->
+        <ng-container matColumnDef="marca">
+            <th mat-header-cell *matHeaderCellDef> Marca </th>
+            <td mat-cell *matCellDef="let product"> {{product.marca}} </td>
+        </ng-container>
+
+        <!-- modelo -->
+        <ng-container matColumnDef="modelo">
+            <th mat-header-cell *matHeaderCellDef> Modelo </th>
+            <td mat-cell *matCellDef="let product"> {{product.modelo}} </td>
+        </ng-container>
+
+        <!-- preco -->
+        <ng-container matColumnDef="preco">
+            <th mat-header-cell *matHeaderCellDef> Preço </th>
+            <td mat-cell *matCellDef="let product"> {{product.preco}} </td>
+        </ng-container>
+
+        <!-- link -->
+        <ng-container matColumnDef="link">
+            <th mat-header-cell *matHeaderCellDef> Foto </th>
+            <td mat-cell *matCellDef="let product">
+                <a *ngIf="product.link_foto != '' && product.link_foto != null" href="{{product.link_foto}}" target="_blank">
+                    <img width="50" src="{{product.link_foto}}" alt="Foto {{product.nome}}">
+                </a>
+            </td>
+        </ng-container>
+
+        <!-- descricao -->
+        <ng-container matColumnDef="descricao">
+            <th mat-header-cell *matHeaderCellDef> Descrição </th>
+            <td mat-cell *matCellDef="let product"> {{product.descricao}} </td>
+        </ng-container>
+
+        <!-- descricao -->
+        <ng-container matColumnDef="acoes">
+            <th width="175" mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let product">
+                <button mat-flat-button (click)="openDialogEdit(product)" color="primary">Editar</button>
+                <button mat-button color="warn" (click)="Delete(product._id)">Excluir</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</section>
